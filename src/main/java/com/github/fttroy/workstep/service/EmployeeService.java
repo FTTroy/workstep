@@ -6,6 +6,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
 
@@ -18,6 +20,10 @@ public class EmployeeService {
 
     public Employee findById(Long id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public List<Employee> findAllByManagerId(Long managerId){
+        return repository.findAllByManagerId(managerId);
     }
 
     public Employee update(Employee employee) {

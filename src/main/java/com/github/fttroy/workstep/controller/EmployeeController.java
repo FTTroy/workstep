@@ -5,6 +5,8 @@ import com.github.fttroy.workstep.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("employee-controller")
 public class EmployeeController {
@@ -20,6 +22,11 @@ public class EmployeeController {
     @GetMapping("find-by-id")
     public Employee findById(@RequestParam Long id) {
         return service.findById(id);
+    }
+
+    @GetMapping("find-all-by-manager-id")
+    public List<Employee> findAllByManagerId(@RequestParam Long managerId){
+        return service.findAllByManagerId(managerId);
     }
 
     @PatchMapping("update")
